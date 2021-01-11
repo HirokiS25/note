@@ -1,28 +1,22 @@
 module.exports = {
   siteMetadata: {
-    title: "note",
+    title: `Title from siteMetadata`,
   },
   plugins: [
-    "gatsby-plugin-sharp",
-    "gatsby-plugin-react-helmet",
-    "gatsby-plugin-sitemap",
-    "gatsby-plugin-mdx",
-    "gatsby-transformer-sharp",
     {
-      resolve: "gatsby-source-filesystem",
+      resolve: `gatsby-source-filesystem`,
       options: {
-        name: "images",
-        path: "./src/images/",
+        name: `src`,
+        path: `${__dirname}/src/`,
       },
-      __key: "images",
     },
+    `gatsby-transformer-remark`,
+    `gatsby-plugin-emotion`,
     {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: "pages",
-        path: "./src/pages/",
-      },
-      __key: "pages",
-    },
-  ],
-};
+      resolve: `gatsby-plugin-typography`,
+      option: {
+        pathToConfigModule: `src/utils/typography`,
+      }
+    }
+  ]
+}
